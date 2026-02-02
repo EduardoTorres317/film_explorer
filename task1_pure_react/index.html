@@ -19,21 +19,35 @@
     ></script>
 
     <script>
-      function App() {
-        // const time = new Date().toLocaleTimeString();
-        const [time, setTime] = React.useState(new Date().toLocaleTimeString());
+      // FIX 1: Extract functions from the global React object
+      const { useState, useEffect, createElement } = React;
 
-        React.useEffect(function () {
-          setInterval(function () {
-            setTime(new Date().toLocaleTimeString());
-          }, 1000);
-        }, []);
+      function CounterApp() {
+        // State for the counter value
+        const [count, setCount] = useState(0);
 
-        return React.createElement("header", null, `Hello React! It's ${time}`);
+        // Function to increment the counter
+        const increment = () => {
+          setCount((prevCount) => prevCount + 1);
+        };
+
+        // Function to increment the counter
+        const decrement = () => {
+          setCount((prevCount) => prevCount - 1);
+        };
+
+        // Return the component structure using React.createElement
+        return createElement(
+          "div",
+          null,
+          createElement("p", null, `Current Count: ${count}`),
+          createElement("button", { onClick: increment }, "Increase Counter"),
+          createElement("button", { onClick: decrement }, "Decrease Counter"),
+        );
       }
 
       const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(React.createElement(App));
+      root.render(React.createElement(CounterApp));
     </script>
   </body>
 </html>
