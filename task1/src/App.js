@@ -67,9 +67,7 @@ function MovieFinder() {
   const [clickedFilmType, setClickedFilmType] = useState("");
 
   const handleClick = () => {
-    const newValue = inputRef.current.value;
-    setWrittenFilmType(newValue);
-    console.log("written film type-->" + newValue);
+    console.log("written film type-->" + writtenfilmType);
   };
 
   const handleFilmTypeClick = (filmType) => {
