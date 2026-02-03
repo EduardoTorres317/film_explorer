@@ -66,8 +66,6 @@ function MovieFinder() {
 
   const [clickedFilmType, setClickedFilmType] = useState("");
 
-  const [selected, setSelected] = useState(false);
-
   const handleClick = () => {
     const newValue = inputRef.current.value;
     setWrittenFilmType(newValue);
@@ -84,7 +82,12 @@ function MovieFinder() {
     <main className="filmselector">
       <div>
         <>
-          <input ref={inputRef} type="text" placeholder="Write the film type" />
+          <input
+            value={writtenfilmType}
+            onChange={(e) => setWrittenFilmType(e.target.value)}
+            type="text"
+            placeholder="Write the film type"
+          />
           <button onClick={handleClick}>Set your film type</button>
         </>
       </div>
