@@ -64,10 +64,20 @@ function MovieFinder() {
 
   const [writtenfilmType, setWrittenFilmType] = useState("");
 
+  const [clickedFilmType, setClickedFilmType] = useState("");
+
+  const [selected, setSelected] = useState(false);
+
   const handleClick = () => {
     const newValue = inputRef.current.value;
     setWrittenFilmType(newValue);
     console.log("written film type-->" + newValue);
+  };
+
+  const handleFilmTypeClick = (filmType) => {
+    setClickedFilmType(filmType);
+
+    console.log("clicked film type-->" + filmType);
   };
 
   return (
@@ -86,7 +96,12 @@ function MovieFinder() {
               {
                 //javascript mode
                 filmTypes.map((filmtype) => (
-                  <FilmType filmTypeObj={filmtype} key={filmtype.name} />
+                  <FilmType
+                    name={filmtype.name}
+                    key={filmtype.name}
+                    handleFilmTypeClick={handleFilmTypeClick}
+                    clickedFilmType={clickedFilmType}
+                  />
                 ))
               }
             </tr>
@@ -98,15 +113,14 @@ function MovieFinder() {
 }
 
 //with{filmTypeObj} we extract filmTypeObj from the props array
-function FilmType({ filmTypeObj }) {
+function FilmType({ name, clickedFilmType, handleFilmTypeClick }) {
   //console.log(filmTypeObj);
 
-  const [clickedFilmType, setClickedFilmType] = useState("");
-  const [selected, setSelected] = useState(false);
+  //const [clickedFilmType, setClickedFilmType] = useState("");
 
-  const handleFilmTypeClick = (filmType) => {
-    setClickedFilmType(filmType);
-    setSelected(true);
+  const innerHandleFilmTypeClick = (filmType) => {
+    handleFilmTypeClick(filmType);
+
     console.log("clicked film type-->" + filmType);
   };
 
@@ -115,10 +129,10 @@ function FilmType({ filmTypeObj }) {
       <td className={`filmtype`}>
         <button
           //className="film-type-btn"
-          className={`film-type-btn ${selected === true ? "active-btn" : ""}`}
-          onClick={() => handleFilmTypeClick(filmTypeObj.name)}
+          className={`film-type-btn ${clickedFilmType === name ? "active-btn" : ""}`}
+          onClick={() => innerHandleFilmTypeClick(name)}
         >
-          {filmTypeObj.name}
+          {name}
         </button>
       </td>
     </>
