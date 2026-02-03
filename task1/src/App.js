@@ -118,19 +118,13 @@ function FilmType({ name, clickedFilmType, handleFilmTypeClick }) {
 
   //const [clickedFilmType, setClickedFilmType] = useState("");
 
-  const innerHandleFilmTypeClick = (filmType) => {
-    handleFilmTypeClick(filmType);
-
-    console.log("clicked film type-->" + filmType);
-  };
-
   return (
     <>
       <td className={`filmtype`}>
         <button
           //className="film-type-btn"
           className={`film-type-btn ${clickedFilmType === name ? "active-btn" : ""}`}
-          onClick={() => innerHandleFilmTypeClick(name)}
+          onClick={() => handleFilmTypeClick(name)}
         >
           {name}
         </button>
