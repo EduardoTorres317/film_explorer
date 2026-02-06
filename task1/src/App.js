@@ -1,7 +1,7 @@
 import "./App.css";
 
 import React from "react";
-import MovieFinder from "./components/MovieFinder";
+import MovieFinder from "./components/moviefinder/MovieFinder";
 import "./index.css";
 
 function App() {
