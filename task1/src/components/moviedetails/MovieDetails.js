@@ -11,15 +11,7 @@ function MovieDetails({
 }) {
   return (
     <>
-      <td className={`filmtype`}>
-        <button
-          //className="film-type-btn"
-          className={`film-type-btn ${clickedFilmType === name ? "active-btn" : ""}`}
-          onClick={() => handleFilmTypeClick(name)}
-        >
-          {name}
-        </button>
-      </td>
+      <td className={`filmtype`}></td>
     </>
   );
 }
