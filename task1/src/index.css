@@ -103,6 +103,24 @@ body {
   width: 100%;
 }
 
+.filmdescription {
+  display: flex;
+  flex-direction: column; /* Ensures column */
+  justify-content: flex-start; /* Optional: Aligns items to the left */
+}
+
+.flex-cell {
+  display: flex; /* Makes the <td> behave like a flex container */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  height: 250px;
+}
+
+.flex-cell img {
+  max-height: 100%; /* Ensures it never grows taller than the cell */
+  width: auto; /* Keeps the aspect ratio */
+}
+
 .filmtypes {
   list-style: none;
   display: flex; /* Forces all children into a single row */
