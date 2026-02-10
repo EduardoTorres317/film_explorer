@@ -1,14 +1,14 @@
 import "./App.css";
 
 import React from "react";
-import MovieFinder from "./components/moviefinder/MovieFinder";
+import MovieFinder3 from "./components/moviefinder/MovieFinder3";
 import "./index.css";
 
 function App() {
   return (
     <div className="container">
       <Header />
-      <MovieFinder />
+      <MovieFinder3 />
       <Footer />
     </div>
   );
@@ -26,7 +26,10 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="order">
-        <p>First implementation of Film classifier for EPAM React Js Course</p>
+        <p>
+          Second implementation of Film classifier for EPAM React Js Course
+          adding film on model component.
+        </p>
       </div>
     </footer>
   );

@@ -113,7 +113,7 @@ body {
   display: flex; /* Makes the <td> behave like a flex container */
   align-items: center; /* Vertical centering */
   justify-content: center; /* Horizontal centering */
-  height: 250px;
+  height: 35px;
 }
 
 .flex-cell img {

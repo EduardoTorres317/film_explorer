@@ -2,95 +2,120 @@ import "../../App.css";
 import "../../index.css";
 
 import React from "react";
-import FilmType from "../filmtype/FilmType";
+import MovieForm from "../advanced/movieform/MovieForm";
+import DeleteMovie from "../advanced/deletemovie/DeleteMovie";
+import film2 from "../../images/film2.jpg";
+import film1 from "../../images/film1.jpg";
 
-const filmTypesList = [
+import { createPortal } from "react-dom";
+import { FocusTrap } from "focus-trap-react";
+
+const moviesList = [
   {
-    name: "All",
-    clicked: false,
+    movieTitle: "Gone with the wind",
+    releaseDate: "1934",
+    movieUrl: film2,
+    rating: "16+",
+    genre: "Romance",
+    runtime: "3H",
+    overview:
+      "narrates the crisis of a southern landowning family during the civil war",
   },
   {
-    name: "Documentary",
-    clicked: false,
-  },
-  {
-    name: "Horror",
-    clicked: false,
-  },
-  {
-    name: "Romantic Comedies",
-    clicked: false,
-  },
-  {
-    name: "Crime",
-    clicked: false,
-  },
-  {
-    name: "Action Movies",
-    clicked: false,
-  },
-  {
-    name: "Marvel Movies",
-    clicked: false,
-  },
-  {
-    name: "Narcos Movies",
-    clicked: false,
+    movieTitle: "Ben Hur",
+    releaseDate: "1958",
+    movieUrl: film1,
+    rating: "R",
+    genre: "HISTORICAL EPIC",
+    runtime: "3H30M",
+    overview: "Life of Juda Ben Hur during Tiberius Caesar's reign",
   },
 ];
 
 const { useState } = React;
 
+const newFilmRoot = document.getElementById("newFilmFormRoot");
+
 function MovieFinder3() {
-  const filmTypes = filmTypesList;
+  const [filmsList, setFilmsList] = useState(moviesList);
+  const [showModal, setShowModal] = useState(false);
+  const [filmNameToDelete, setFilmNameToDelete] = useState("Moonraker");
 
-  const [writtenfilmType, setWrittenFilmType] = useState("");
+  //submitMovieAction is to be called in parent,
+  //should just add this element to the array
+  function submitMovieAction(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
 
-  const [clickedFilmType, setClickedFilmType] = useState("");
+    const newMovie = {
+      movieTitle: formData.get("title"),
+      releaseDate: formData.get("releaseDate"),
+      movieUrl: formData.get("movieUrl"),
+      rating: formData.get("rating"),
+      genre: formData.get("genre"),
+      runtime: formData.get("runtime"),
+      overview: formData.get("overview"),
+    };
 
-  const handleClick = () => {
-    console.log("written film type-->" + writtenfilmType);
-  };
+    console.log("adding new film-->" + newMovie.movieTitle);
 
-  const handleFilmTypeClick = (filmType) => {
-    setClickedFilmType(filmType);
+    setFilmsList([...filmsList, newMovie]);
 
-    console.log("clicked film type-->" + filmType);
-  };
+    //console.log("new films-->" + filmsList);
+  }
+
+  function deleteMovieAction(event) {
+    console.log("movie to delete-->" + event);
+    //const afterFilmRemoved = filmsList.filter(
+    //(film) => film.movieTitle !== event,
+    //);
+    //setFilmsList(afterFilmRemoved);
+  }
 
   return (
     <main className="filmselector">
-      <div>
-        <>
-          <input
-            value={writtenfilmType}
-            onChange={(e) => setWrittenFilmType(e.target.value)}
-            type="text"
-            placeholder="Write the film type"
-          />
-          <button onClick={handleClick}>Set your film type</button>
-        </>
-      </div>
-
-      <React.Fragment>
+      <>
         <table>
           <tbody>
             <tr className="filmtypes">
-              {
-                //javascript mode
-                filmTypes.map((filmtype) => (
-                  <FilmType
-                    name={filmtype.name}
-                    key={filmtype.name}
-                    handleFilmTypeClick={handleFilmTypeClick}
-                    clickedFilmType={clickedFilmType}
-                  />
-                ))
-              }
+              <td colSpan={5}>Films:</td>
             </tr>
+            {
+              //javascript mode
+              filmsList.map((movie) => (
+                <tr className="filmtypes" key={movie.movieTitle}>
+                  <td className="flex-cell">{movie.movieTitle}</td>
+                  <td className="flex-cell">{movie.releaseDate}</td>
+                  <td className="flex-cell">{movie.genre}</td>
+                  <td className="flex-cell">{movie.rating}</td>
+                  <td className="flex-cell">{movie.runtime}</td>
+                  <td className="flex-cell">{movie.overview}</td>
+                </tr>
+              ))
+            }
           </tbody>
         </table>
-      </React.Fragment>
+      </>
+
+      <div id="newFilmFormRoot">
+        <MovieForm
+          submitMovieAction={submitMovieAction}
+          filmToUpdate={filmsList.at(1)}
+        />
+        <button onClick={() => setShowModal(true)}>
+          Activate delete movie window
+        </button>
+        {showModal &&
+          createPortal(
+            <FocusTrap>
+              <DeleteMovie
+                deleteMovieAction={deleteMovieAction}
+                filmNameToDelete={filmNameToDelete}
+              />
+            </FocusTrap>,
+            document.body,
+          )}
+      </div>
     </main>
   );
 }
