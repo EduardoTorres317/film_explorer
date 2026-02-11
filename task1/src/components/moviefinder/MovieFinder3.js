@@ -59,17 +59,16 @@ function MovieFinder3() {
 
     console.log("adding new film-->" + newMovie.movieTitle);
 
-    setFilmsList([...filmsList, newMovie]);
+    setFilmsList((filmsList) => [...filmsList, newMovie]);
 
     //console.log("new films-->" + filmsList);
   }
 
   function deleteMovieAction(event) {
     console.log("movie to delete-->" + event);
-    //const afterFilmRemoved = filmsList.filter(
-    //(film) => film.movieTitle !== event,
-    //);
-    //setFilmsList(afterFilmRemoved);
+    setFilmsList((filmsList) =>
+      filmsList.filter((film) => film.movieTitle !== event),
+    );
   }
 
   return (
