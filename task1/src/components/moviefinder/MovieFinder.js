@@ -73,23 +73,21 @@ function MovieFinder() {
       </div>
 
       <React.Fragment>
-        <table>
-          <tbody>
-            <tr className="filmtypes">
-              {
-                //javascript mode
-                filmTypes.map((filmtype) => (
-                  <FilmType
-                    name={filmtype.name}
-                    key={filmtype.name}
-                    handleFilmTypeClick={handleFilmTypeClick}
-                    clickedFilmType={clickedFilmType}
-                  />
-                ))
-              }
-            </tr>
-          </tbody>
-        </table>
+        <ul>
+          <li className="filmtypes">
+            {
+              //javascript mode
+              filmTypes.map((filmtype) => (
+                <FilmType
+                  name={filmtype.name}
+                  key={filmtype.name}
+                  handleFilmTypeClick={handleFilmTypeClick}
+                  clickedFilmType={clickedFilmType}
+                />
+              ))
+            }
+          </li>
+        </ul>
       </React.Fragment>
     </main>
   );

@@ -1,7 +1,7 @@
 import "../../../App.css";
 import "../../../index.css";
 
-function MovieForm({ submitMovieAction, filmToUpdate }) {
+function MovieForm({ submitMovieAction, updateMovieAction, filmToUpdate }) {
   return (
     <form onSubmit={submitMovieAction}>
       <table height="300px">
@@ -79,7 +79,7 @@ function MovieForm({ submitMovieAction, filmToUpdate }) {
           </tr>
 
           <tr>
-            <td colSpan={2}>
+            <td colSpan={1}>
               <button>Add Movie to List</button>
             </td>
           </tr>

@@ -1,7 +1,7 @@
-import SortControl from "./SortControl";
+import SearchTypeControl from "./SearchTypeControl";
 
 export default {
-  component: SortControl,
+  component: SearchTypeControl,
 };
 
 //imageUrl, movieName, genre, releaseYear

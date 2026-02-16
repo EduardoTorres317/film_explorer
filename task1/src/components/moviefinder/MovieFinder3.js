@@ -71,6 +71,12 @@ function MovieFinder3() {
     );
   }
 
+  function updateMovieAction(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    console.log("film to update-->" + formData.movieTitle);
+  }
+
   return (
     <main className="filmselector">
       <>

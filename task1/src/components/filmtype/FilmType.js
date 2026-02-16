@@ -4,7 +4,7 @@ import "../../index.css";
 function FilmType({ name, clickedFilmType, handleFilmTypeClick }) {
   return (
     <>
-      <td className={`filmtype`}>
+      <li>
         <button
           //className="film-type-btn"
           className={`film-type-btn ${clickedFilmType === name ? "active-btn" : ""}`}
@@ -12,7 +12,7 @@ function FilmType({ name, clickedFilmType, handleFilmTypeClick }) {
         >
           {name}
         </button>
-      </td>
+      </li>
     </>
   );
 }

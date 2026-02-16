@@ -1,27 +1,27 @@
 import "../../App.css";
 import "../../index.css";
 
-function MovieTile({ imageUrl, movieName, genre, releaseYear }) {
+function MovieTile({ posterUrl, movieTitle, overview, releaseDate }) {
   return (
     <>
-      <table height="300px">
-        <tbody>
-          <tr>
-            <td class="flex-cell">
-              <img src={imageUrl} alt="Film Poster" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="filmdescription">
-                <span>{movieName}</span>
-                <span>{genre}</span>
-              </div>
-            </td>
-            <td>{releaseYear}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div>
+        <ul>
+          <li>
+            <span className="flex-cell-movie-url">
+              <img src={posterUrl} alt="Film Poster" />
+            </span>
+          </li>
+        </ul>
+        <ul className="filmdescription">
+          <li>
+            <div className="title-row">
+              <span className="movie-title">{movieTitle}</span>
+              <span className="movie-title">{releaseDate}</span>
+            </div>
+          </li>
+          <li className="genre">{overview}</li>
+        </ul>
+      </div>
     </>
   );
 }

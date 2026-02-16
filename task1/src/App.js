@@ -3,12 +3,13 @@ import "./App.css";
 import React from "react";
 import MovieFinder3 from "./components/moviefinder/MovieFinder3";
 import "./index.css";
+import MovieFinderWithUseEffects from "./components/moviefinder/MovieFinderWithUseEffects";
 
 function App() {
   return (
     <div className="container">
       <Header />
-      <MovieFinder3 />
+      <MovieFinderWithUseEffects />
       <Footer />
     </div>
   );
@@ -27,8 +28,8 @@ function Footer() {
     <footer className="footer">
       <div className="order">
         <p>
-          Second implementation of Film classifier for EPAM React Js Course
-          adding film on model component.
+          Third version of Film explorer for EPAM React Js Course using effect
+          to bring film list from backed.
         </p>
       </div>
     </footer>
