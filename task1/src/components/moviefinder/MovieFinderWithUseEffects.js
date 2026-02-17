@@ -59,7 +59,7 @@ function MovieFinderWithUseEffects() {
   const [searchTypeUserSelection, setSearchTypeUserSelection] =
     useState("genres");
 
-  const [queriedFilmsList, setQueriedFilmsList] = useState();
+  const [queriedFilmsList, setQueriedFilmsList] = useState({});
 
   const [clickedFilmType, setClickedFilmType] = useState("comedy");
 
@@ -182,7 +182,7 @@ function MovieFinderWithUseEffects() {
       </React.Fragment>
 
       <React.Fragment>
-        <div className="movie-container">
+        <div>
           <ul className="movie-grid">
             {queriedFilmsList !== undefined &&
               queriedFilmsList.length > 0 &&

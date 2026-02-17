@@ -120,6 +120,7 @@ body {
 .movie-title {
   font-family: monospace;
   font-weight: bold;
+  font-size: small;
 }
 
 .release-year {
