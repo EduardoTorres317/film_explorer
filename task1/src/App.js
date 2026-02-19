@@ -28,8 +28,9 @@ function Footer() {
     <footer className="footer">
       <div className="order">
         <p>
-          Third version of Film explorer for EPAM React Js Course using effect
-          to bring film list from backed.
+          Fifth version of Film explorer for EPAM React Js Course using effect
+          to bring film list from backend as well as router framework to show
+          film details.
         </p>
       </div>
     </footer>

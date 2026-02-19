@@ -6,6 +6,8 @@ import FilmType from "../filmtype/FilmType";
 import MovieTile from "../movietile/MovieTile";
 import SearchTypeControl from "../sortcontrol/SearchTypeControl";
 
+import { Outlet } from "react-router-dom";
+
 const filmTypesList = [
   {
     name: "all",
@@ -181,6 +183,8 @@ function MovieFinderWithUseEffects() {
         </ul>
       </React.Fragment>
 
+      <Outlet />
+
       <React.Fragment>
         <div>
           <ul className="movie-grid">
@@ -189,6 +193,7 @@ function MovieFinderWithUseEffects() {
               queriedFilmsList.map((movie) => (
                 <li key={movie.id} className="movie-grid-item">
                   <MovieTile
+                    movieId={movie.id}
                     posterUrl={movie.poster_path}
                     movieTitle={movie.title}
                     overview={movie.overview}
