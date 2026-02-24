@@ -17,8 +17,9 @@ export async function MovieDetailsLoader({ params }) {
     const responseJson = await response.json();
 
     const movieDetails = {
-      imageUrl: responseJson.poster_path,
-      movieName: responseJson.title,
+      id: filmId,
+      poster_path: responseJson.poster_path,
+      title: responseJson.title,
       genre: responseJson.genres[0],
       releaseYear: responseJson.release_date,
       description: responseJson.overview,

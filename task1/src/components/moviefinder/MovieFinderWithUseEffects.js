@@ -4,9 +4,10 @@ import "../../index.css";
 import React from "react";
 import FilmType from "../filmtype/FilmType";
 import MovieTile from "../movietile/MovieTile";
+import MovieForm from "../advanced/movieform/MovieForm";
 import SearchTypeControl from "../sortcontrol/SearchTypeControl";
 
-import { Outlet } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
 
 const filmTypesList = [
   {
@@ -50,7 +51,12 @@ const searchoptions = [
 
 const { useEffect, useState } = React;
 
+/**
+ * MovieFinderWithUseEffects implementation
+ * @returns
+ */
 function MovieFinderWithUseEffects() {
+  const navigate = useNavigate();
   const filmTypes = filmTypesList;
 
   const [searchKey, setSearchKey] = useState();
@@ -140,6 +146,11 @@ function MovieFinderWithUseEffects() {
     setSearchKey(formData.get("queryText"));
   }
 
+  const addMovieClick = () => {
+    // Navigates to the dynamic route
+    navigate(`/addMovie`);
+  };
+
   return (
     <main className="filmselector">
       <div>
@@ -183,7 +194,25 @@ function MovieFinderWithUseEffects() {
         </ul>
       </React.Fragment>
 
-      <Outlet />
+      <React.Fragment>
+        <div>
+          <ul>
+            <li>
+              <button onClick={addMovieClick}>Add movie</button>
+            </li>
+          </ul>
+        </div>
+      </React.Fragment>
+
+      <React.Fragment>
+        <div>
+          <ul>
+            <li>
+              <Outlet />
+            </li>
+          </ul>
+        </div>
+      </React.Fragment>
 
       <React.Fragment>
         <div>

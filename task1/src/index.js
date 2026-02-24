@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MovieDetails from "./components/moviedetails/MovieDetails";
 import { MovieDetailsLoader } from "./components/moviedetails/MovieDetailsLoader";
 import MovieFinderWithUseEffects from "./components/moviefinder/MovieFinderWithUseEffects";
+import MovieForm from "./components/advanced/movieform/MovieForm";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
         path: "/moviedetails/:filmId",
         loader: MovieDetailsLoader,
         element: <MovieDetails />,
+      },
+      //agregar una ruta para agregar pelicula
+      {
+        path: "/addMovie",
+        element: <MovieForm />,
       },
     ],
   },

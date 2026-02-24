@@ -77,6 +77,9 @@ body {
 }
 
 /* *************** */
+.outlet {
+  box-sizing: border-box;
+}
 
 .filmselector {
   display: flex;
@@ -133,6 +136,22 @@ body {
   font-family: monospace;
   font-weight: bold;
   margin-right: 30px; /* Adjust this value for more or less space */
+}
+
+.movie-edition {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to next line */
+  list-style: none; /* Removes default bullets */
+  padding: 0;
+  margin: 0;
+  gap: 30px; /* Space between tiles */
+  justify-content: flex-start;
+}
+
+.movie-edition-item {
+  /* Calculate 1/3 width minus the gap to fit 3 per row */
+  flex: 0 0 calc(50% - 20px);
+  box-sizing: border-box;
 }
 
 .movie-grid {

@@ -1,86 +1,94 @@
 import "../../../App.css";
 import "../../../index.css";
 
-function MovieForm({ submitMovieAction, updateMovieAction, filmToUpdate }) {
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+
+function MovieForm() {
+  const navigate = useNavigate();
+
+  // 1. Initialize useForm
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  // 2. Define the submit logic
+  const onSubmit = async (data) => {
+    try {
+      console.log("Movie to be added-->", data);
+
+      const response = await fetch("http://localhost:4000/movies", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data), // data already contains numbers thanks to valueAsNumber
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Success:", result);
+        navigate(-1);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
-    <form onSubmit={submitMovieAction}>
-      <table height="300px">
+    // 3. Use handleSubmit to wrap your onSubmit function
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <table style={{ height: "300px" }}>
         <tbody>
           <tr>
             <td className="flex-cell">
-              <label htmlFor="filmtitle">Film title: </label>
+              <label htmlFor="title">Film title: </label>
               <input
-                type="text"
-                id="filmtitle"
-                name="title"
-                defaultValue={filmToUpdate.movieTitle}
+                {...register("title", { required: "Title is required" })}
               />
+              {errors.title && (
+                <span className="error">{errors.title.message}</span>
+              )}
             </td>
             <td className="flex-cell">
-              <label htmlFor="filmdate">Release date: </label>
+              <label htmlFor="release_date">Release date: </label>
               <input
                 type="date"
-                id="filmdate"
-                name="releaseDate"
-                defaultValue={filmToUpdate.releaseDate}
+                {...register("release_date", { required: "Date is required" })}
               />
             </td>
           </tr>
           <tr>
-            <td className="flex-cell">
-              <label htmlFor="filmurl">Url: </label>
-              <input
-                type="text"
-                id="filmurl"
-                name="movieUrl"
-                defaultValue={filmToUpdate.movieUrl}
-              />
-            </td>
-            <td className="flex-cell">
-              <label htmlFor="filmrating">Rating: </label>
-              <input
-                type="text"
-                id="filmrating"
-                name="rating"
-                defaultValue={filmToUpdate.rating}
-              />
+            <td className="flex-cell" colSpan={2}>
+              <label htmlFor="poster_path">Url: </label>
+              <input {...register("poster_path")} />
             </td>
           </tr>
           <tr>
             <td className="flex-cell">
-              <label htmlFor="filmgenre">Genre: </label>
+              <label htmlFor="revenue">Revenue: </label>
               <input
-                type="text"
-                id="filmgenre"
-                name="genre"
-                defaultValue={filmToUpdate.genre}
+                type="number"
+                {...register("revenue", { valueAsNumber: true })}
               />
             </td>
             <td className="flex-cell">
-              <label htmlFor="filmruntime">Run time: </label>
+              <label htmlFor="runtime">Run time: </label>
               <input
-                type="text"
-                id="filmruntime"
-                name="runtime"
-                defaultValue={filmToUpdate.runtime}
+                type="number"
+                {...register("runtime", { valueAsNumber: true })}
               />
             </td>
           </tr>
           <tr>
             <td colSpan={2}>
-              <label htmlFor="filmoverview">Overview: </label>
-              <input
-                type="text"
-                id="filmoverview"
-                name="overview"
-                defaultValue={filmToUpdate.overview}
-              />
+              <label htmlFor="overview">Overview: </label>
+              <textarea {...register("overview")} rows={4} cols={40} />
             </td>
           </tr>
-
           <tr>
             <td colSpan={1}>
-              <button>Add Movie to List</button>
+              <button type="submit">Add Movie to List</button>
             </td>
           </tr>
         </tbody>
@@ -88,4 +96,5 @@ function MovieForm({ submitMovieAction, updateMovieAction, filmToUpdate }) {
     </form>
   );
 }
+
 export default MovieForm;
