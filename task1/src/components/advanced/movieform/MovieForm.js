@@ -28,7 +28,7 @@ function MovieForm() {
       if (response.ok) {
         const result = await response.json();
         console.log("Success:", result);
-        navigate(-1);
+        navigate("/");
       }
     } catch (error) {
       console.error("Error:", error);

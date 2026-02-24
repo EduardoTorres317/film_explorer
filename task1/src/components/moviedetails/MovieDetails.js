@@ -51,7 +51,7 @@ function MovieDetails() {
 
       if (response.ok) {
         console.log("Success:", await response.json());
-        navigate(-1);
+        navigate("/");
       }
     } catch (error) {
       console.error("Error updating movie:", error);
