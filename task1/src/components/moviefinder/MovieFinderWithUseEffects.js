@@ -81,7 +81,7 @@ function MovieFinderWithUseEffects() {
           searchKey +
           "&searchBy=" +
           searchCriterion +
-          "&offset=40&limit=40";
+          "&offset=70&limit=70";
         console.log("httpQuery used to call back end-->" + httpQuery);
         const response = await fetch(httpQuery);
 

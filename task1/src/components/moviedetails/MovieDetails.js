@@ -78,7 +78,7 @@ function MovieDetails() {
           <li>
             <div className="filmdescription">
               <span>
-                Film Id:
+                <label htmlFor="id">Film Id:</label>
                 <input
                   {...register("id", {
                     required: "id is required",
@@ -113,6 +113,7 @@ function MovieDetails() {
           <li>
             <div className="filmdescription">
               <span>
+                <label htmlFor="revenue">Revenue:</label>
                 <input
                   type="number"
                   {...register("revenue", {
@@ -126,7 +127,8 @@ function MovieDetails() {
                 )}
               </span>
               <span>
-                Runtime: {movieDetails.runtime}
+                <label htmlFor="runtime">Runtime:</label>
+                {movieDetails.runtime}
                 <input
                   type="number"
                   {...register("runtime", {
