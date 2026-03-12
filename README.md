@@ -50,7 +50,12 @@ When you're ready to make this README your own, just edit this file and use the 
 
 ## Suggestions for a good README
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+This project includes the files for a sample Reactjs application which
+1)gets a list of films and displays them in a flex layout of 3 columns
+where each tile shows film poster, rating, revenue, description, release year
+2)provides an area to either show more film details once a user clicks on a link inside each tile
+or a form to add a new film
+3)enables the user to select films by genre
 
 ## Name
 Choose a self-explaining name for your project.
