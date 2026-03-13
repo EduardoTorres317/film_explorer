@@ -8,6 +8,6 @@ This project includes the files for a sample Reactjs application which
 where each tile shows film poster, rating, revenue, description, release year
 2)provides an area to either show more film details once a user clicks on a link inside each tile
 or a form to add a new film
-3)enables the user to select films by genre (action, thriller, comedy, horror)
+3)enables the user to select films by genre (action, thriller, comedy, horror).
 
- allowing your project to keep going. You can also make an explicit request for maintainers.
+ 
